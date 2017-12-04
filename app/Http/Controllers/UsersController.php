@@ -46,11 +46,11 @@ class UsersController extends Controller
 
     public function show(User $user)
     {
-        $statuses = $user->statuses()
+        $weapons = $user->weapons()
             ->orderBy('created_at', 'desc')
             ->paginate(30);
 
-        return view('users.show', compact('user', 'statuses'));
+        return view('users.show', compact('user', 'weapons'));
     }
 
     public function store(Request $request)

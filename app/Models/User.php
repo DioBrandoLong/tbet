@@ -55,11 +55,11 @@ class User extends Authenticatable
 
     public function feed()
     {
-        $user_ids=Auth::user()->followings->pluck('id')->toArray();
-        array_push($user_ids,Auth::user()->id);
-        return Status::whereIn('user_id',$user_ids)
+        $user_ids = Auth::user()->followings->pluck('id')->toArray();
+        array_push($user_ids, Auth::user()->id);
+        return Status::whereIn('user_id', $user_ids)
             ->with('user')
-            ->orderBy('create_at','desc');
+            ->orderBy('created_at', 'desc');
     }
 
     public function followers()
@@ -92,6 +92,15 @@ class User extends Authenticatable
     public function isFollowing($user_id)
     {
         return $this->followings()->allRelatedIds()->contains($user_id);
+    }
+
+    public function weapon()
+    {
+        return $this->hasMany(Weapon::class);
+    }
+
+    public function weapons(){
+        return  $this->hasMany(Weapons::class);
     }
 
 }

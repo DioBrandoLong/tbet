@@ -18,13 +18,13 @@
                     @include('users._follow_form')
                 @endif
 
-                @if (count($statuses) > 0)
+                @if (count($weapons) > 0)
                     <ol class="statuses">
-                        @foreach ($statuses as $status)
+                        @foreach ($weapons as $w)
                             @include('statuses._status')
                         @endforeach
                     </ol>
-                    {!! $statuses->render() !!}
+                    {!! $weapons->render() !!}
                 @endif
             </div>
         </div>
