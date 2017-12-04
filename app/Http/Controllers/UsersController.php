@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
+use  JPush\Client as JPush;
 
 class UsersController extends Controller
 {
@@ -55,6 +56,23 @@ class UsersController extends Controller
 
     public function store(Request $request)
     {
+
+        //初始化
+        $app_key = "0ed964309adfeb11eb81bf93";
+        $master_secret = "c59aff4ce72a88093ceb75d2";
+        $client = new JPush($app_key, $master_secret);
+        $push = $client->push()
+            ->setPlatform('android')
+            ->setAudience('all')
+            ->addAllAudience()
+            ->setNotificationAlert("极光推送测试")
+            ->options(array(
+                "apns_production" => true  //true表示发送到生产环境(默认值)，false为开发环境
+            ));
+        // 调用示例
+        $push->message('极光推送测试');
+        $push->send();
+
         $this->validate($request, [
             'name' => 'required|max:50',
             'email' => 'required|email|unique:users|max:255',

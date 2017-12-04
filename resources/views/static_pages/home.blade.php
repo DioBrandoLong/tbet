@@ -1,5 +1,6 @@
 @extends('layouts.default')
 
+
 @section('content')
     @if (Auth::check())
         <div class="row">
@@ -33,12 +34,5 @@
             </p>
         </div>
     @endif
-
-
-
-    <form action="home.blade.php" method="post">
-        <input type="text" name="message"/>
-        <button type="submit">推送广播通知</button>
-    </form>
 
 @stop

@@ -19,7 +19,8 @@
     "filp/whoops": "~2.0",
     "fzaninotto/faker": "~1.4",
     "mockery/mockery": "0.9.*",
-    "phpunit/phpunit": "~6.0"
+    "phpunit/phpunit": "~6.0",
+    "jpush/jpush": "v3.5.*"
   },
   "autoload": {
     "classmap": [
@@ -58,5 +59,4 @@
     "sort-packages": true,
     "optimize-autoloader": true
   }
-
 }
